@@ -23,6 +23,7 @@ const int echoPinD = 18;     // Pino de Echo do HY-SRF05
 const int triggerPinE = 4;   // Pino de Trigger do HY-SRF05
 const int echoPinE = 2;      // Pino de Echo do HY-SRF05
 const int piezo = 27;        // Pino do buzzer bengala
+const int piezo2 = 12;        // Pino do buzzer bengala
 const int vibraE = 26;       // Pino do vibracall esquerdo
 const int vibraD = 25;       // Pino do vibracall direito
 
@@ -70,8 +71,10 @@ float calcularDistancia(int triggerPin, int echoPin) {
 void labirinto() {
   if (distancia >= 35) {
     digitalWrite(piezo, LOW);
+    digitalWrite(piezo2, LOW);
   } else {
     digitalWrite(piezo, HIGH);
+    digitalWrite(piezo2, HIGH);
   }
   if (distanciaD >= 35) {
     dacWrite(vibraD, 0);
@@ -135,6 +138,7 @@ void setup() {
   pinMode(triggerPinE, OUTPUT);
   pinMode(echoPinE, INPUT);
   pinMode(piezo, OUTPUT);
+  pinMode(piezo2, OUTPUT);
   pinMode(vibraE, OUTPUT);
 }
 

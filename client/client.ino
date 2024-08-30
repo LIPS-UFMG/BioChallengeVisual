@@ -34,8 +34,8 @@ static void notifyCallback(BLERemoteCharacteristic *pBLERemoteCharacteristic, ui
 
   for (int i = 0; i < length; i += sizeof(int)) {
     distancia_global[i / sizeof(int)] = *(int *)(pData + i);
-    //Serial.print("Valor recebido: ");
-    //Serial.println(distancia_global[i / sizeof(int)]);
+    Serial.print("Valor recebido: ");
+    Serial.println(distancia_global[i / sizeof(int)]);
   }
 }
 
@@ -122,19 +122,16 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 };     // MyAdvertisedDeviceCallbacks
 
 void labirinto() {
-
   if (distancia_global[1] >= 35) {
     noTone(piezoD);
   } else {
     tone(piezoD, 432);
-    Serial.println("direita ativado");
     delay(10);
   }
   if (distancia_global[2] >= 35) {
     noTone(piezo);
   } else {
-    tone(piezo, 432);
-    Serial.println("esquerda ativado ");
+    tone(piezo, 250);
     delay(10);
   }
 }
